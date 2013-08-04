@@ -1,0 +1,106 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "9b624bd110f895faf06774f85ce07da7",
+    "packages": [
+        {
+            "name": "wukka/store",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wukka/Store.git",
+                "reference": "f1cd00020d486525c75cae640a0f90bf7cf037b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wukka/Store/zipball/f1cd00020d486525c75cae640a0f90bf7cf037b0",
+                "reference": "f1cd00020d486525c75cae640a0f90bf7cf037b0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "wukka/test": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Wukka\\Store": "lib/"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Loehrer",
+                    "email": "72squared@gmail.com",
+                    "homepage": "http://www.linkedin.com/pub/john-loehrer/10/439/9b6",
+                    "role": "Developer"
+                }
+            ],
+            "description": "key value storage interface",
+            "time": "2013-08-03 20:24:10"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "wukka/test",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wukka/test.git",
+                "reference": "0d642bc0cce9a5593142a4de8c14f35245f0a980"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wukka/test/zipball/0d642bc0cce9a5593142a4de8c14f35245f0a980",
+                "reference": "0d642bc0cce9a5593142a4de8c14f35245f0a980",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Wukka": "lib"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Loehrer",
+                    "email": "72squared@gmail.com",
+                    "homepage": "http://www.linkedin.com/pub/john-loehrer/10/439/9b6",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tap compliant test harness for PHP 5.3",
+            "homepage": "http://github.com/wukka/test",
+            "keywords": [
+                "test",
+                "unittest"
+            ],
+            "time": "2013-08-02 23:45:28"
+        }
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "wukka/store": 20,
+        "wukka/test": 20
+    },
+    "platform": {
+        "php": ">=5.3.2"
+    },
+    "platform-dev": [
+
+    ]
+}
