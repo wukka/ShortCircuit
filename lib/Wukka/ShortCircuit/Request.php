@@ -21,23 +21,23 @@ class Request extends Container implements Iface\Request
     * pass in alternate to $_REQUEST
     */
     public function __construct( $data = NULL ){
-        if( $data === NULL ) $data = $_REQUEST;
-        parent::__construct( $data );
+        if( $data === NULL ) {
+            $this->__d =& $_REQUEST;
+        } else {
+            parent::__construct( $data );
+        }
+        $server = \Wukka\ShortCircuit::server();
         $trim_chars = "/\n\r\0\t\x0B ";
-        $this->uri = isset($_SERVER['REQUEST_URI']) ? '/' . trim($_SERVER['REQUEST_URI'], $trim_chars) : '/';
-        if (isset($this->{'_'})) {
-            $action = $this->{'_'};
-        }
-        else if (isset($_SERVER['PATH_INFO'])) {
-            $action = $_SERVER['PATH_INFO'];
-        }
-        else {
+        $this->uri = '/' . trim($server->REQUEST_URI, $trim_chars);
+        
+        if (isset($server->PATH_INFO)) {
+            $action = $server->PATH_INFO;
+        } else {
             $pos = strpos($this->uri, '?');
             $action =( $pos === FALSE ) ? 
-                $this->uri : substr($this->uri , 0, $pos);
+            $this->uri : substr($this->uri , 0, $pos);
         }
-        $script_name = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
-        $action = str_replace(array($script_name, $script_name.'?_='), '', $action);
+        $script_name = $server->SCRIPT_NAME;
         $action = trim($action, $trim_chars);
         $this->action = '/' . $action;
         if (strpos($this->uri, $script_name) === 0) {

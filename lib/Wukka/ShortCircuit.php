@@ -24,6 +24,12 @@ class ShortCircuit {
     */
     protected static $request;
     
+      
+    /*
+    * a Server object ... used to access $_SERVER variables.
+    */
+    protected static $server;
+    
     /*
     * the controller object.
     */
@@ -108,6 +114,18 @@ class ShortCircuit {
         if( $request ) return self::$request = $request;
         if( isset( self::$request ) ) return self::$request;
         return self::$request = new ShortCircuit\Request();
+    }
+    
+    
+    /**
+    * get the singleton server object.
+    * can customize by doing:
+    * ShortCircuit::server( new MyServer );
+    */
+    public static function server( ShortCircuit\Iface\Server $server = NULL){
+        if( $server ) return self::$server = $server;
+        if( isset( self::$server ) ) return self::$server;
+        return self::$server = new ShortCircuit\Server();
     }
     
     /**

@@ -36,6 +36,13 @@ class View extends Container implements Iface\View
         return \Wukka\ShortCircuit::request();
     }
     
+    /**
+    * alias method for the router server object.
+    */
+    public function server(){
+        return \Wukka\ShortCircuit::server();
+    }
+    
     public function link( $name, array $params = array() ){
         return \Wukka\ShortCircuit::link( $name, $params );
     }
