@@ -50,7 +50,7 @@ class Resolver implements Iface\Resolver
                 
             }
         }
-        $uri = strtolower(trim( $uri, '/'));
+        $uri = trim( $uri, '/');
         if( ! $uri ) $uri = 'index';
         $res = $this->get( $uri, 'action', TRUE);
         if( $res ) return $uri;
@@ -100,8 +100,7 @@ class Resolver implements Iface\Resolver
     /**
     * convert a name into a file path.
     */
-    public function get($name, $type, $skip_lower = FALSE ) {
-        if( ! $skip_lower ) $name = strtolower($name);
+    public function get($name, $type ) {
         if( strlen( $name ) < 1 ) $name = 'index';
         $path = $this->appdir . $name . '.' . $type . '.php';
         if( ! file_exists( $path ) ) return '';
