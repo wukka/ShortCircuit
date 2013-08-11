@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-port="11299"
+port="11298"
 host="0.0.0.0"
 echo "Starting webservice (php $host:$port )"
 

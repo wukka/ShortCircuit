@@ -19,7 +19,6 @@ curl_close($ch);
 T::is( $info['http_code'], 200, 'page request returned a 200 ok response');
 T::is($res, 'hello 123', 'got back the content I expected');
 
-
 $ch = curl_init("$baseurl/idtest/123/");
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 $res = trim( curl_exec($ch) );

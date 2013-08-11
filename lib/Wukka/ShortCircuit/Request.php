@@ -1,10 +1,11 @@
 <?php
 namespace Wukka\ShortCircuit;
+use Wukka\Store\Iterator as Container;
 /**
  * CircuitRequest
  * @package CircuitMVC
  */
-class Request extends Input implements Iface\Request
+class Request extends Container implements Iface\Request
 {
 
     private $args = array();
