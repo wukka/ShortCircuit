@@ -21,23 +21,23 @@ class Request extends Container implements Iface\Request
     * pass in alternate to $_REQUEST
     */
     public function __construct( $data = NULL ){
-        if( $data === NULL ) {
-            $this->__d =& $_REQUEST;
-        } else {
-            parent::__construct( $data );
-        }
-        $server = \Wukka\ShortCircuit::server();
+        if( $data === NULL ) $data = $_REQUEST;
+        parent::__construct( $data );
         $trim_chars = "/\n\r\0\t\x0B ";
+        $server = \Wukka\ShortCircuit::server();
         $this->uri = '/' . trim($server->REQUEST_URI, $trim_chars);
-        
-        if (isset($server->PATH_INFO)) {
+        if (isset($this->{'_'})) {
+            $action = $this->{'_'};
+        } elseif (isset($server->PATH_INFO)) {
             $action = $server->PATH_INFO;
-        } else {
+        }
+        else {
             $pos = strpos($this->uri, '?');
             $action =( $pos === FALSE ) ? 
-            $this->uri : substr($this->uri , 0, $pos);
+                $this->uri : substr($this->uri , 0, $pos);
         }
         $script_name = $server->SCRIPT_NAME;
+        $action = str_replace(array($script_name, $script_name.'?_='), '', $action);
         $action = trim($action, $trim_chars);
         $this->action = '/' . $action;
         if (strpos($this->uri, $script_name) === 0) {

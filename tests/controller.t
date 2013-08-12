@@ -6,7 +6,7 @@ use Wukka\ShortCircuit;
 use Wukka\ShortCircuit\Resolver;
 use Wukka\ShortCircuit\Controller;
 use Wukka\Shortcircuit\Request;
-T::plan(3);
+T::plan(4);
 
 ShortCircuit::resolver( new Resolver( __DIR__ . '/app/' ) );
 
@@ -19,3 +19,6 @@ $r = ShortCircuit::request();
 $r->set('abc', '123');
 $res = $c->execute('nested/requestmirror');
 T::is( $res, array('abc'=>'123'), 'requestmirror action returned the var we mapped into the request');
+
+$res = $c->call('test', array('payload'=>$num = mt_rand(1, 1000) ) );
+T::is( $res, array('response'=>$num), 'made an api call from the controller');

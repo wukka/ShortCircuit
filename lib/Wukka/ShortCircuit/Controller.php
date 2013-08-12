@@ -44,6 +44,13 @@ class Controller extends Container implements Iface\Controller
         return \Wukka\ShortCircuit::server();
     }
     
+    /**
+    * alias method for the call method.
+    */
+    public function call($name, $scope = NULL ){
+        return \Wukka\ShortCircuit::call($name, $scope);
+    }
+    
     public function link( $name, array $params = array() ){
         return \Wukka\ShortCircuit::link( $name, $params );
     }

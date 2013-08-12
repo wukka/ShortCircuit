@@ -5,7 +5,7 @@ use Wukka\Test as T;
 use Wukka\ShortCircuit;
 use Wukka\ShortCircuit\Resolver;
 use Wukka\ShortCircuit\View;
-T::plan(4);
+T::plan(5);
 
 ShortCircuit::resolver( new Resolver( __DIR__ . '/app/' ) );
 
@@ -22,3 +22,6 @@ $out = $v->fetch('nested/test');
 T::is($out, realpath(__DIR__ . '/app/nested/test.view.php') . ' fun', 'fetched the nested test view with the variable mapped in');
 $out = $v->fetch('nested');
 T::is($out, realpath(__DIR__ . '/app/nested.view.php') . ' fun', 'fetched the nested test index view');
+
+$res = $v->call('test', array('payload'=>$num = mt_rand(1, 1000) ) );
+T::is( $res, array('response'=>$num), 'made an api call from the view');
