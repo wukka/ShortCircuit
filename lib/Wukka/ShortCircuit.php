@@ -177,14 +177,6 @@ class ShortCircuit {
     public static function forward( $action_name ){
     	return self::dispatch( $action_name, TRUE );
     }
-    
-    /**
-    * do an include pass it some scope.
-    */
-    public static function call( $_name, $_scope = NULL ){
-        if( $_scope && is_array($_scope ))  extract( $_scope );
-        return include self::resolver()->get( $_name, 'call' );
-    }
 }
 
 // EOF

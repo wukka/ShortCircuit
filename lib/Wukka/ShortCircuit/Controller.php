@@ -1,6 +1,5 @@
 <?php
 namespace Wukka\ShortCircuit;
-use Wukka\Store\Iterator as Container;
 
 /**
  * Controller
@@ -11,7 +10,7 @@ use Wukka\Store\Iterator as Container;
  *
  * The class will be used when ShortCircuit::controller() is called.
  */
-class Controller extends Container implements Iface\Controller
+class Controller extends State implements Iface\Controller
 {
    /**
     * call an action file.
@@ -28,30 +27,5 @@ class Controller extends Container implements Iface\Controller
             return;
         }
         return include( $path );
-    }
-    
-    /**
-    * alias method for the router request object.
-    */
-    public function request(){
-        return \Wukka\ShortCircuit::request();
-    }
-    
-    /**
-    * alias method for the router server object.
-    */
-    public function server(){
-        return \Wukka\ShortCircuit::server();
-    }
-    
-    /**
-    * alias method for the call method.
-    */
-    public function call($name, $scope = NULL ){
-        return \Wukka\ShortCircuit::call($name, $scope);
-    }
-    
-    public function link( $name, array $params = array() ){
-        return \Wukka\ShortCircuit::link( $name, $params );
     }
 }
