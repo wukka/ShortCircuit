@@ -101,10 +101,6 @@ class ShortCircuit {
         return FALSE;
     }
     
-    public static function link( $name, array $params = array() ){
-        return self::request()->base() . self::resolver()->link( $name, $params );
-    }
-    
     /**
     * get the singleton request object.
     * can customize by doing:
